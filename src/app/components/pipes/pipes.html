@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-3">
+        Original value : {{firstName}},
+        <br>
+        After pipe : {{ firstName| uppercase}}
+    </div>
+    <div class="col-3">
+        Original value : {{firstName}},
+        <br>
+        After pipe : {{ firstName|lowercase }}
+    </div>
+    <div class="col-3">
+        Original value : {{myTitle}},
+        <br>
+        After pipe : {{ myTitle|titlecase }}
+    </div>
+    <div class="col-3">
+        Original value : {{currentDate}},
+        <br>
+        After pipe : {{ currentDate| date:'dd-MM-yyyy' }}
+    </div>
+    <div class="col-3">
+        Original value : {{studentData}},
+        <br>
+        After pipe : {{ studentData|json}}
+    </div>
+    <div class="col-3">
+        Original value : {{currentTime}},
+        <br>
+        After pipe : {{ currentTime|async | date:'hh:mm:ss'}}
+    </div>
+    <div class="col-3">
+        Original value : {{studentData.state}},
+        <br>
+        After pipe : {{studentData.state|na}}
+    </div>
+</div>

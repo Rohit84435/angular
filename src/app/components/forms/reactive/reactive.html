@@ -1,0 +1,80 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Reactive Form</h1>
+    <p>Using ngModel</p>
+</div>
+<div class="row">
+    <div class="col-8">
+        <form class="row g-3" [formGroup]="studentForm">
+            <div class="col-md-4">
+                <label class="form-label">First name</label>
+                <input type="text" class="form-control" formControlName="firstName" minlength="3">
+                <div class="text-danger">
+                    @if(studentForm.controls['firstName'].touched &&
+                    studentForm.controls['firstName'].errors?.['required']){
+                    <span>This field is required</span>
+                    }
+                    @else if(studentForm.controls['firstName'].touched &&
+                    studentForm.controls['firstName'].errors?.['minlength']){
+                    <span>Minimum char 3 required</span>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Last name</label>
+                <input type="text" name="lastName" class="form-control" formControlName="lastName">
+
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text"><span>&#64;</span> </span>
+                    <input type="text" name="userName" formControlName="userName" class="form-control">
+                </div>
+                <div class="text-danger">
+                    @if(studentForm.controls['userName'].touched && studentForm.controls['userName'].errors?.['email']){
+                    <span>Invalid email format</span>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">City</label>
+                <input type="text" name="city" formControlName="city" class="form-control">
+
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">State</label>
+                <select class="form-select" formControlName="state" name="state">
+                    <option selected disabled value="">Choose...</option>
+                    <option>Mahashtra</option>
+                    <option>Goa</option>
+                    <option>Punjab</option>
+                </select>
+
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Zip</label>
+                <input type="text" name="zipCode" formControlName="zipcode" required class="form-control">
+
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" name="isAcceptTerms" formControlName="isAcceptTerms"
+                        type="checkbox">
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                    </label>
+
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-secondary" type="button">Reset form</button>
+                <button class="btn btn-primary mx-2" (click)="onSave()" [disabled]="studentForm.invalid"
+                    type="button">Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-4">
+        {{formValue|json}}
+    </div>
+</div>
