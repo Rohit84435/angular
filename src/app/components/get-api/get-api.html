@@ -1,0 +1,22 @@
+<app-alert [message]="alertTest" [alertType]="'Warning'"></app-alert>
+<div class="row">
+    <div class="col-2">
+        <button class="btn btn-success" (click)="getAllUsers()">Click Me</button>
+        <button class="btn btn-primary" (click)="getAllCustomers()">Click Me</button>
+    </div>
+    <div class="col-3">
+        <select class="form-select">
+            @for(item of userList; track $index){
+            <option>{{item.name}}</option>
+            }
+        </select>
+    </div>
+    <div class="col-3">
+        <select class="form-select">
+            @for(item of customerList; track $index){
+            <option>{{item.fullName}}</option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-primary" (click)="onChange()">Change</button>
+</div>
